@@ -15,11 +15,12 @@
       <div id="rooms">
         <%= render @rooms %>
       </div>
+      <%= button_to 'Sign Out', session_path(@current_user),  :method => :delete %>
     </div>
   </div>
   <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12 bg-dark text-light" style="height: 100vh;">
     <% if @single_room %>
-	    <h4 class="text-center" style="margin-top: 2%"><%= @single_room.name %> </h4>
+	    <h4 class="text-center" style="margin-top: 2%"><%= @user&.username || @single_room.name %> </h4>
 	    <%= turbo_stream_from @single_room %>
 			<div id="messages">
 				<%= render @messages%>
@@ -28,3 +29,9 @@
 	  <% end %>
   </div>
 </div>
+<div class = "row">
+  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin: 2%">
+    
+  </div>
+</div>
+
